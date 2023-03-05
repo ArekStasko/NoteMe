@@ -1,8 +1,16 @@
+using NoteMe.Data.DataContext;
+using NoteMe.Data.Repositories.NotesRepository;
+using NoteMe.Processors.ProcessorsFactory;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IContext, Context>();
+builder.Services.AddSingleton<INotesRepository, NotesRepository>();
+builder.Services.AddScoped<IProcessorsFactory, ProcessorsFactory>();
 
 var app = builder.Build();
 
