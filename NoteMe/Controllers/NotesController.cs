@@ -17,15 +17,15 @@ public class NotesController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet]
-    public List<Note> GetAll()
+    [HttpGet("getall")]
+    public IEnumerable<Note> GetAll()
     {
         var processor = _processors.GetGetAllProcessorInstance();
         var notes = processor.Get();
-        return notes;
+        return notes.ToArray();
     }
 
-    [HttpGet]
+    [HttpGet("get")]
     public Note Get(int Id)
     {
         var processor = _processors.GetGetSingleProcessorInstance();
@@ -33,21 +33,21 @@ public class NotesController : ControllerBase
         return note;
     }
 
-    [HttpPost]
+    [HttpPost("add")]
     public void Add(Note note)
     {
         var processor = _processors.GetAddProcessorInstance();
         processor.Add(note);
     }
 
-    [HttpDelete]
+    [HttpDelete("delete")]
     public void Delete(int Id)
     {
         var processor = _processors.GetDeleteProcessorInstance();
         processor.Delete(Id);
     }
 
-    [HttpPut]
+    [HttpPut("update")]
     public void Update(Note note)
     {
         var processor = _processors.GetUpdateProcessorInstance();

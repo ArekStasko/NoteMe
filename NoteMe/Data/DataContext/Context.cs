@@ -4,5 +4,5 @@ namespace NoteMe.Data.DataContext;
 
 public class Context : IContext
 {
-    public List<Note> Notes { get; set; }
+    public List<Note> Notes { get; set; } = new();
 }
