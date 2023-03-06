@@ -34,21 +34,21 @@ public class NotesController : ControllerBase
     }
 
     [HttpPost("add")]
-    public void Add(Note note)
+    public void Add([FromBody]Note note)
     {
         var processor = _processors.GetAddProcessorInstance();
         processor.Add(note);
     }
 
     [HttpDelete("delete")]
-    public void Delete(int Id)
+    public void Delete([FromBody]int Id)
     {
         var processor = _processors.GetDeleteProcessorInstance();
         processor.Delete(Id);
     }
 
     [HttpPut("update")]
-    public void Update(Note note)
+    public void Update([FromBody]Note note)
     {
         var processor = _processors.GetUpdateProcessorInstance();
         processor.Update(note);
